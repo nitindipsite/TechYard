@@ -1,0 +1,6 @@
+C:\Users\nitinar\Documents\Visual Studio 2013\Projects\JunkYard\IEnumerable\bin\Debug\IEnumerable.pdb
+C:\Users\nitinar\Documents\Visual Studio 2013\Projects\JunkYard\IEnumerable\obj\Debug\IEnumerable.pdb
+C:\Users\nitinar\documents\visual studio 2013\Projects\JunkYard\IEnumerable\bin\Debug\IEnumerable.exe.config
+C:\Users\nitinar\documents\visual studio 2013\Projects\JunkYard\IEnumerable\bin\Debug\IEnumerable.exe
+C:\Users\nitinar\documents\visual studio 2013\Projects\JunkYard\IEnumerable\obj\Debug\IEnumerable.exe
+C:\Users\nitinar\Documents\Visual Studio 2013\Projects\JunkYard\IEnumerable\obj\Debug\JunkYard.csprojResolveAssemblyReference.cache

@@ -1,0 +1,9 @@
+C:\Users\nitinar\Documents\Visual Studio 2013\Projects\JunkYard\IEnumerable\bin\Debug\IEnumerable.exe.config
+C:\Users\nitinar\Documents\Visual Studio 2013\Projects\JunkYard\IEnumerable\obj\Debug\IEnumerable.exe
+C:\Users\nitinar\Documents\Visual Studio 2013\Projects\JunkYard\IEnumerable\obj\Debug\IEnumerable.pdb
+C:\Users\nitinar\Documents\Visual Studio 2013\Projects\JunkYard\TechYard\bin\Debug\IEnumerable.exe.config
+C:\Users\nitinar\Documents\Visual Studio 2013\Projects\JunkYard\TechYard\obj\Debug\IEnumerable.exe
+C:\Users\nitinar\Documents\Visual Studio 2013\Projects\JunkYard\TechYard\obj\Debug\IEnumerable.pdb
+C:\Users\nitinar\Documents\Visual Studio 2013\Projects\JunkYard\LearnYard\bin\Debug\IEnumerable.exe.config
+C:\Users\nitinar\Documents\Visual Studio 2013\Projects\JunkYard\LearnYard\obj\Debug\IEnumerable.exe
+C:\Users\nitinar\Documents\Visual Studio 2013\Projects\JunkYard\LearnYard\obj\Debug\IEnumerable.pdb

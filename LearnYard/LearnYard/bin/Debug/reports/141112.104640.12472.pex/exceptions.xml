@@ -1,0 +1,10 @@
+﻿<frameTree version="1.0.0.0"><frameException type="System.OutOfMemoryException"><tag exceptionState="unexpected"><generatedTestRef idref="ccc859c6-ac48-466a-846f-20b71929dc8f"/>
+</tag>
+</frameException>
+<frameException type="System.IO.IOException"><tag exceptionState="unexpected"><generatedTestRef idref="e923f160-34a0-4374-962a-abc710dcdef4"/>
+</tag>
+</frameException>
+<frameException type="System.ArgumentOutOfRangeException"><tag exceptionState="unexpected"><generatedTestRef idref="27b98ec1-9c87-4927-bc2a-32f3eae37f61"/>
+</tag>
+</frameException>
+</frameTree>
