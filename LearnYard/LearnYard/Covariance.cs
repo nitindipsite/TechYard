@@ -47,7 +47,7 @@ namespace LearnYard
     /*
         Enters Generics and Covariance
      *  We are going to make EntityRepository a generic class that requires the Entity type it intends to operate on via a generic type argument.
-     *  Declaring TEntity as out thus covariant.
+     *  Declaring TEntity as "out" thus covariant - We can now return the derived type.
      */
 
     internal interface IEntityRepository<out TEntity> where TEntity : Entity

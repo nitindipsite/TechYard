@@ -68,6 +68,7 @@
     <Compile Include="Abstract.cs" />
     <Compile Include="CloseOverMe.cs" />
     <Compile Include="ConstructorChaining.cs" />
+    <Compile Include="Contravariance.cs" />
     <Compile Include="Covariance.cs" />
     <Compile Include="Delegated.cs" />
     <Compile Include="DisposePattern.cs" />
