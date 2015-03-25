@@ -6,79 +6,75 @@ using System.Threading.Tasks;
 
 namespace DesignPatterns
 {
-    public abstract class Beverage
+    public interface IBeverage
     {
-        public abstract String GetDescription();
-        public abstract double GetCost();
+         String GetDescription();
+        double GetCost();
     }
 
-    public class LongBlack : Beverage
+    public class LongBlackBeverage : IBeverage
     {
-        public override string GetDescription()
+        public string GetDescription()
         {
             return "Long Black";
         }
 
-        public override double GetCost()
+        public double GetCost()
         {
             return 3.8;
         }
     }
 
 
-    public class Cappuccino : Beverage
+    public class CappuccinoBeverage : IBeverage
     {
-        public override string GetDescription()
+        public string GetDescription()
         {
             return "Cappuccino";
         }
 
-        public override double GetCost()
+        public double GetCost()
         {
             return 4.5;
         }
     }
 
 
-    public abstract class Condiment : Beverage
+    public class SoyBeverageDecorator : IBeverage
     {
-    }
+        private readonly IBeverage _beverage;
 
-    public class Soy : Condiment
-    {
-        private Beverage _beverage;
-
-        public Soy(Beverage beverage)
+        public SoyBeverageDecorator(IBeverage beverage)
         {
             this._beverage = beverage;
         }
 
-        public override string GetDescription()
+        public string GetDescription()
         {
             return this._beverage.GetDescription() +  ", Soy";
         }
 
-        public override double GetCost()
+        public double GetCost()
         {
             return this._beverage.GetCost() + 1.0;
         }
     }
 
-    public class Mocha : Condiment
+    public class MochaBeverageDecorator : IBeverage
     {
-        private Beverage _beverage;
+        private readonly IBeverage _beverage;
 
-        public Mocha(Beverage beverage)
+        public MochaBeverageDecorator(IBeverage beverage)
         {
             this._beverage = beverage;
         }
 
-        public override string GetDescription()
+        public string GetDescription()
         {
             return this._beverage.GetDescription() + ", Mocha";
         }
 
-        public override double GetCost()
+        public double GetCost()
         {
             return this._beverage.GetCost() + 2.0;
         }

@@ -10,11 +10,13 @@ namespace DesignPatterns
     {
         static void Main(string[] args)
         {
-            Beverage cappuccino = new Cappuccino();
-            Beverage soyMochaCappuccino = new Soy(new Mocha(cappuccino));
+            IBeverage cappuccino = new CappuccinoBeverage();
+            IBeverage soyMochaCappuccino = new SoyBeverageDecorator((new MochaBeverageDecorator(cappuccino)));
             
             Console.WriteLine(soyMochaCappuccino.GetDescription());
             Console.WriteLine("Cost of the Soy Mocha Cappuccino is " + soyMochaCappuccino.GetCost());
+            
+            MenuCompositeComponent.TestCompositePattern();
             Console.ReadLine();
         }
     }
