@@ -1,0 +1,80 @@
+﻿<!DOCTYPE html>
+
+<html>
+    <head>
+        <style>
+            #results li.pass {
+                color: green;
+            }
+
+            #results li.fail {
+                color: red;
+            }
+        </style>
+    </head>
+    <body>
+        <ul id="results"></ul>
+        <script>
+            (function () {
+                var results;
+                this.assert = function assert(value, desc) {
+                    var li = document.createElement("li");
+                    li.className = value ? "pass" : "fail";
+                    li.appendChild(document.createTextNode(desc));
+                    results = document.getElementById("results");
+                    results.appendChild(li);
+                };
+            })();
+
+            // Calling function as a METHOD (of an object).
+            // So, because function is assigned to an object's property, it has become a method of that object and thus invocation-context
+            // or function-context is the object.
+            function creep() {
+                 return this;
+            }
+
+            assert(true, "==========FUNCTION AS A METHOD===============");
+            var ninja1 = {
+                skulk : creep
+            }
+            assert(ninja1.skulk() == ninja1, "ninja1 is skulking");
+
+            var ninja2 = {
+                skulk: creep
+            }
+            assert(ninja2.skulk() == ninja2, "ninja2 is skulking");
+            // Notice how we are able to call same method on 2 different objects and this refers to the object
+            // and this is the essence of object oriented programming.
+
+            // Calling function as a CONSTRUCTOR.
+            // When preceeded with new()
+            //  1. A new object is created
+            //  2. This object is passed to the contructor as "this"
+            //  3. In absence of explicit return value, this new object is returned.
+            function Ninja() {
+                this.skulk = function() {
+                    return this;
+                }
+            }
+
+            var ninja11 = new Ninja();
+            var ninja12 = new Ninja();
+            assert(true, "=========FUNCTION AS A CONSTRUCTOR===========");
+            assert(ninja11.skulk() === ninja11, "ninja11 is skulking.");
+            assert(ninja12.skulk() === ninja12, "ninja12 is skulking.");
+
+            window.onload = function () {
+            };
+
+            assert(true, "=========INLINE NAMED FUNCTION===========");
+            var ninja = function inlineNinja() {
+                assert(ninja == inlineNinja, "Inside the inline, both are same");
+            }
+            ninja();
+
+            assert(typeof inlineNinja == "undefined", "Outside there is no such thing as inlineNinja");
+
+        </script>
+    </body>
+</html>
+
