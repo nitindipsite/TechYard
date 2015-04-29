@@ -1,0 +1,77 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Test Suite</title>
+    <style>
+        #results li.pass { color: green; }
+        #results li.fail { color: red; }
+    </style>
+</head>
+<body>
+    <ul id="results"></ul>
+    <div></div>
+
+    <script>
+    (function () {
+        var results;
+        this.assert = function assert(value, desc) {
+            var li = document.createElement("li");
+            li.className = value ? "pass" : "fail";
+            li.appendChild(document.createTextNode(desc));
+            results = document.getElementById("results");
+            results.appendChild(li);
+        };
+    })();
+    window.onload = function () {
+        var outerValue = "ninja";
+        var laterDemo1, later;
+
+        assert(true, "===================CLOSURE DEMO 1 ===================");
+        /*
+            innerValue is defined in scope of outerFunctionDemo1() and is referred to by innerFunctionDemo1().
+            By invoking outer function as outerFunctionDemo1(), we set up the innerFunctionDemo1() and assign it's reference to laterDemo1.
+            When we invoke laterDemo1(), innerValue was defined in the scope of outerFunctionDemo1() which is now gone. But  because we have reference captured in laterDemo1, 
+            it has incresed the lifetime of innerValue to exist as long as laterDemo1 does.
+        */
+        function outerFunctionDemo1() {
+            var innerValue = "samurai";
+            function innerFunctionDemo1 () {
+                assert(outerValue == "ninja", "I can see the ninja.");
+                assert(innerValue == "samurai", "I can see the samurai.");
+            }
+            laterDemo1 = innerFunctionDemo1;
+        }
+
+        outerFunctionDemo1();
+
+        laterDemo1();
+
+        assert(true, "===================CLOSURE DEMO 2 ===================");
+        /*
+           - Within the same scope, variables not defined cannot be forward referenced.
+           - All variables in an outer scope, even those declared after the function declaration are included.
+        */
+        function outerFunction() {
+            var innerValue = "samurai";
+            function innerFunction(paramValue) {
+                assert(outerValue, "Inner can see the ninja.");
+                assert(innerValue, "Inner can see the samurai.");
+                assert(paramValue, "Inner can see the wakizashi.");
+                assert(tooLate, "Inner can see the ronin.");
+            }
+
+            later = innerFunction;
+        }
+        assert(tooLate, "Outer can see ronin.");
+
+        var tooLate = "ronin";
+        outerFunction();
+        later("wakizashi");
+
+    };
+    </script>
+
+
+</body>
+</html>
