@@ -1,0 +1,83 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Test Suite</title>
+    <style>
+        #results li.pass { color: green; }
+        #results li.fail { color: red; }
+    </style>
+    <script src="C:\Users\nitinar\Documents\jQuery\jquery-1.11.3.js"></script>
+</head>
+<body>
+    <ul id="results"></ul>
+    <div></div>
+    <button>Get Random Person</button>
+    <input type="text" />
+    <script>
+    (function () {
+        var results;
+        this.assert = function assert(value, desc) {
+            var li = document.createElement("li");
+            li.className = value ? "pass" : "fail";
+            li.appendChild(document.createTextNode(desc));
+            results = document.getElementById("results");
+            results.appendChild(li);
+        };
+    })();
+
+        assert(true, "==================Demonstrating bind() - setting up 'this'====================");
+
+        var user = {
+			data: [
+			{name: "T. Woods", age: 37},
+			{name: "P. Mickelson", age: 43}
+			],
+			clickHandler: function (event) {
+			    console.log('not working');
+				var randomNum = ((Math.random () * 2 | 0) + 1) - 1; // random number between 0 and 1​
+				$("input").val(this.data[randomNum].name + ", " + this.data[randomNum].age);
+			}
+        }
+
+        // Why is this commented line not going to work?
+        // Because 'this' is calling context which is button in this case and does button have anything called 'data'? NO.
+        // So to pass in invocation context, use bind. Now when we bind to user, then user object is the 'this' being referred in the handler.
+        // $("button").click(user.clickHandler);
+        $("button").click(user.clickHandler.bind(user));
+
+        assert(true, "==================Using bind() to curry a function (partial function application)====================");
+        /*
+            greet() gets called with 3 arguments. We would like to pre-fill certain arguments.
+            So let's say you want to call the method with gender prefilled like so: greetAMan(36, "Hamlet")
+        */
+        function greet(gender, age, name) {
+
+            var salutation = gender === "male" ? "Mr." : "Ms.";
+            if (age > 35) {
+                return "Hello, " + salutation + name;
+            }
+            else {
+                return "Hey, " + name;
+            }
+        }
+
+        var greetAMan = greet.bind(null, "male");
+        assert(true, greetAMan(36, "Hamlet"));
+        assert(true, greetAMan(16, "johny boy"));
+
+        assert(true, "==================Using call() to borrow Array functions====================");
+        var arrayLikeObject = {0: "Martin", 1: 78, 2: 67, 3:["Nit", "Laura", "Pat"], length:4}
+
+        // See what we are doing here? We are calling indexOf() available to Array instances on our object.
+        assert(Array.prototype.indexOf.call(arrayLikeObject, "Martin") === -1 ? false : true, "The value [Martin] exists in the array object.");
+        // Similarly, lets reverse the object.
+        Array.prototype.reverse.call(arrayLikeObject)
+        assert(arrayLikeObject[3] === "Martin", "Array like object reversed.");
+        console.log(arrayLikeObject);
+
+    </script>
+
+
+</body>
+</html>
