@@ -76,6 +76,29 @@
         assert(arrayLikeObject[3] === "Martin", "Array like object reversed.");
         console.log(arrayLikeObject);
 
+        // Similarly, we can borrow a custom method (from our custom object).
+        var appController = {
+            scores: [21, 32, 43, 54, 65],
+            maxScore: null,
+            getMax: function(){
+               this.maxScore =  Math.max.apply(null, this.scores);
+            }
+        };
+
+        var gameController = {
+            scores: [54, 65, 76, 87, 98],
+            maxScore: null
+        };
+        assert(true, "===============Using apply() to borrow getMax() from appController for gameController================")
+        appController.getMax();
+        assert(65 == appController.maxScore, "App controller max is 65");
+        appController.getMax.apply(gameController);
+        assert(98 == gameController.maxScore, "Game controller max is 98");
+
+        // The last interesting aspect is that Math.max() can be called with variable number of arguments. However, using apply() above, we were able to pass in an array.
+        var currentMax = Math.max(1, 2, 3, 4, 5, 6);
+        assert(true, "currentmax is " + currentMax);
+
     </script>
 
 
